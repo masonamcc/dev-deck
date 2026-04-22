@@ -23,3 +23,84 @@
     padding: .5rem;
     border-bottom: 1px;
 }
+
+.small-table {
+    width: 100%;
+    background: #ffffff;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: .5rem; /* apply to table instead of thead */
+}
+
+.small-table > thead {
+    background: #0098db;
+    color: white;
+    font-size: 12px;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.small-table > thead > tr {
+    padding-inline: .5rem;
+}
+
+.small-table > thead > tr > th {
+    padding-inline: .5rem;
+    /*padding: .5rem;*/
+    text-align: left;
+    color: white
+}
+
+.small-table > tbody > tr > td {
+    padding: .5rem;
+    border-bottom: 1px;
+    font-size: 12px;
+
+}
+
+.data-table {
+    /*width: 100%;*/
+    background: #ffffff;
+    border-collapse: separate;
+    /*border-spacing: 0;*/
+    overflow: hidden;
+    border-radius: .5rem; /* apply to table instead of thead */
+}
+
+.data-table > thead {
+    /*background: #0098db;*/
+    color: black;
+    font-size: 12px;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.data-table > thead > tr {
+    padding-inline: .5rem;
+}
+
+.data-table > thead > tr > th {
+    padding-right: .5rem;
+    /*padding: .5rem;*/
+    text-align: left;
+    /*color: white*/
+}
+
+.data-table > tbody > tr > td {
+    /*padding: .5rem;*/
+    border-bottom: 1px;
+    font-size: 12px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0; /* optional: removes left indent */
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+}
+
+.view {
+    height: 100%
+}

@@ -27,7 +27,7 @@ export default function SignInScreen() {
             console.log('Signed in:', authUser);
             setAwsUser(authUser)
             console.log(awsUser)
-            navigate('/app/home')
+            navigate('/home')
         } catch (error) {
             console.error('Sign in error:', error);
         }

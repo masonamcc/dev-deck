@@ -3,11 +3,6 @@ import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom'; // ✅ Import BrowserRouter
 import './index.css';
 import App from './App.jsx';
-import {Amplify, Auth} from 'aws-amplify';
-import awsconfig from './aws-exports';
-import {IonIcon} from "@ionic/react";
-
-Amplify.configure(awsconfig);
 
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 
@@ -16,7 +11,6 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <ApolloProvider client={client}>
@@ -24,6 +18,5 @@ createRoot(document.getElementById('root')).render(
                 <App/>
             </BrowserRouter>
         </ApolloProvider>
-
     </StrictMode>
 )

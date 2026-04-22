@@ -2,24 +2,77 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-color: #121219;
+    /*--accent: #bfab7d;*/
+    --accent: #25f3e0
+}
+
+/*Colors*/
+
+.accent {
+    color: var(--accent)
+}
+
+/*Texts*/
+h1 {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h6 {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/*Backgrounds*/
+.bg-white {
+    background: white;
+}
+
+/*Spacing*/
+.mb-1-children > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+/*Demarcation*/
+.horizon-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, white, transparent);
+}
+
+
+.color-white {
+    color: white;
+}
+
+.color-faint {
+    color: rgba(255,255,255,.08)
+}
+
+
 .master-container {
-    /*background-color: #704242;*/
+    background: var(--bg-color);
     height: 100vh;
     width: 100vw;
+
 }
 
 .navbar {
-    background: #ffffff;
     /*color: white;*/
     display: flex;
     justify-content: space-between;
     margin: 0;
     align-items: center;
     min-height: 50px;
-    color: black;
+    color: var(--accent);
     padding-inline: 2rem;
     border-bottom: 1px solid;
-    border-color: rgba(0,0,0,.4);
+    border-color: var(--accent);
 }
 
 .static-container {
@@ -52,7 +105,7 @@
 
 .mainframe {
     /*background-color: #f1f1f1;*/
-    width: 90%;
+    width: 100%;
     height: auto;
     display: flex;
 }
@@ -68,7 +121,6 @@
 .mainframe-grid {
     width: 100%;
     height: 100%;
-    background-color: white;
     display: grid;
     grid-template-columns: 1fr;
     /*gap: 1rem*/
@@ -89,15 +141,6 @@
 
 .sub-nav {
     /*width: 50%*/
-}
-
-.grid-2-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    height: 100%;
-    gap: 10rem;
-    /*height: 70%*/
 }
 
 .p-1 {
@@ -286,7 +329,7 @@
 }
 
 .light {
-    background-color: #e5e5e5;
+    background-color: #f3f3f3;
     color: black
 }
 
@@ -307,7 +350,7 @@
     width: 100%;
     /*grid-template-columns: 1fr;*/
     gap: 1rem;
-    padding: 1rem;
+    /*padding: 1rem;*/
     padding-bottom: 0;
     margin: 0;
 }
@@ -324,6 +367,10 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+.is-col-span-2 {
+    grid-column: span 2;
+}
+
 .is-col-span-3 {
     grid-column: span 3;
 }
@@ -333,6 +380,8 @@
     border-radius: 0;
     /*padding: 2rem;*/
     width: 100%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
 }
 
 .shadow {
@@ -350,6 +399,10 @@
 
 
 /*Colors*/
+
+.white-bg {
+    background: white;
+}
 
 .color-tech-dark {
     /*background: linear-gradient(45deg, #12023d, #3239d4);*/
@@ -374,3 +427,105 @@
     background: #1c1c1c;
     color: white
 }
+
+.panel {
+    box-shadow: 0px 10px 10px 0 rgba(0,0,0,.1);
+}
+
+.outline {
+    border: 1px solid;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex {
+    display: flex;
+    align-items: flex-start; /* 🟢 each child will size to its own content height */
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs {
+    display: flex;
+}
+
+.tabs > li {
+    margin-right: 1rem;
+    /*border-bottom: 1px solid;*/
+}
+
+.fullwidth {
+    width: 100%
+}
+
+.width-50 {
+    width: 50%
+}
+
+/*Heights*/
+
+.height-50v {
+    height: 50vh;
+}
+
+.horizon-center {
+    justify-content: center;
+}
+
+.vertical-center {
+    align-items: center;
+}
+
+/*Animations*/
+.wavy-text {
+    display: inline-block;
+
+    background-size: 200% auto;
+    background-position: 0% center;
+    background-repeat: repeat;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    animation: shimmer 4s linear infinite;
+}
+
+.silver-waves {
+    background-image: linear-gradient(
+            90deg,
+            #b8b8b8 ,
+            #ffffff ,
+            #c9c9c9 ,
+            #ffffff ,
+            #b8b8b8
+    );
+}
+
+.accent-waves {
+    background-image: linear-gradient(
+            90deg,
+            var(--accent),
+            color-mix(in srgb, var(--accent), white 50%),
+            var(--accent),
+            color-mix(in srgb, var(--accent), white 50%),
+            var(--accent)
+    );
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+

@@ -25,7 +25,7 @@ export default function SetupScreen({setAwsUser}) {
         const response = await addDbUser(email, firstName, lastName);
         if (response) {
             console.log('Response in front-end: ', response)
-            navigate("/app/home")
+            navigate("/home")
         }
     }
 
