@@ -2,7 +2,7 @@
 import './App.css';
 import {Route, Routes} from 'react-router-dom';
 import Navbar from './navigation/Navbar.jsx';
-import AppHomeScreen from './screens/AppHomeScreen.jsx';
+import Home from './screens/Home.jsx';
 import ManageOrgsScreen from "./screens/ManageOrgsScreen.jsx";
 import EditOrgScreen from "./screens/EditOrgScreen.jsx";
 
@@ -17,7 +17,7 @@ function App() {
                     <div className={'page-content'}>
                         <div className={'mainframe'}>
                             <Routes>
-                                <Route path={'/'} element={<AppHomeScreen/>}/>
+                                <Route path={'/'} element={<Home/>}/>
                                 <Route path={'/manage/organizations'} element={<ManageOrgsScreen/>}/>
                                 <Route path={'/manage/organizations/edit'} element={<EditOrgScreen/>}/>
                             </Routes>

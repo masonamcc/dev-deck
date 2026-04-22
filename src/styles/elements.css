@@ -98,9 +98,19 @@ ul {
 }
 
 a {
-    cursor: pointer;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: inherit;
+    transition: .2s all;
+}
+a:hover {
+    opacity: .5;
 }
 
 .view {
     height: 100%
+}
+
+link {
+    color: white;
 }
