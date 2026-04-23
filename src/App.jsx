@@ -9,7 +9,7 @@ import EditOrgScreen from "./screens/EditOrgScreen.jsx";
 function App() {
 
     return (
-        <div className={'master-container'}>
+        <div className={'master-container'} style={{overflow: 'hidden'}}>
 
                 <div className={`static-container`}>
                     <Navbar/>

@@ -168,7 +168,7 @@ export default function Home() {
                             <div className="repo-grid">
 
                                 {repos.filter(repo =>
-                                    !repo.is_template &&
+                                    !repo.is_template && !repo.topics.some(topic => topic.includes('app')) &&
                                     !config.projects.some(proj =>
                                         repo.name.includes(proj.projectName)
                                     )
