@@ -724,7 +724,7 @@ h6 {
 }
 
 /* ── Web ─────────────────────────────────────────────── */
-@media (min-width: 1000px) and (max-width: 1920px) {
+@media (min-width: 1000px) and (max-width: 3000px) {
     .mobile {
         display: none;
     }
