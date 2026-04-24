@@ -70,7 +70,7 @@ export default function Home() {
                         </div>
                         <div className={'mb-1-children monospace'}>
                             <p>{config.location}</p>
-                            <h6 className={'monospace'}>{config.bio}</h6>
+                            <p className={'monospace'}>{config.bio}</p>
                             <button className={'button bg-accent'}>Resume</button>
                         </div>
                     </div>
@@ -135,9 +135,8 @@ export default function Home() {
                                 <>
                                     {config.projects.map(project => (
                                         <div className={"grid-2-col gap-1s"}>
-                                            <div className={"mb-1-children"}>
-                                                <h4 className={'color-white'}
-                                                    style={{fontWeight: 700}}>{project.projectName}</h4>
+                                            <div className={"mb-half-children color-white"}>
+                                                <h4 style={{fontWeight: 700}}>{project.projectName}</h4>
                                                 <h6>{project.status}</h6>
                                                 <p className={'monospace color-light'}>{project.projectDescription}</p>
                                             </div>
