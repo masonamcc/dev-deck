@@ -1,6 +1,4 @@
 import {Link, useNavigate} from "react-router-dom";
-import '../styles/styles.css'
-import '../styles/sidebar.css'
 
 import {useEffect} from "react";
 import {Auth} from "aws-amplify";

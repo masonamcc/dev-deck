@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/elements.css"
+
 import {navigate} from "ionicons/icons";
 import {Link} from "react-router-dom";
 

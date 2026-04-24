@@ -1,5 +1,4 @@
 import {Link, useNavigate} from "react-router-dom";
-import '../styles/styles.css'
 
 import {useEffect} from "react";
 import {config} from '../config.js'
