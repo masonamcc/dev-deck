@@ -8,8 +8,8 @@
 }
 
 :root {
-    --bg-color: linear-gradient(to bottom, #121219, color-mix(in srgb, var(--accent), black 90%));
-    --accent: #35d1f4;
+    --bg-color: linear-gradient(to bottom, #121219, color-mix(in srgb, var(--accent), black 95%));
+    --accent: #ff9a7b;
     --faint: rgba(255,255,255,.2);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -551,6 +551,10 @@ h6 {
     width: 50%
 }
 
+.width-75 {
+    width: 75%;
+}
+
 /*Heights*/
 
 .height-50v {
@@ -636,7 +640,7 @@ h6 {
 /* GitHub repo grid */
 .repo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
@@ -707,6 +711,51 @@ h6 {
     color: rgba(255, 255, 255, .4);
 }
 
+/* Language pills on repo cards */
+.repo-card-langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin-top: .25rem;
+}
+
+.repo-card-lang-pill {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    font-family: monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,.6);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 999px;
+    padding: .15rem .5rem;
+}
+
+.repo-card-lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Mini language bar on repo cards */
+.mini-lang-bar {
+    display: flex;
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    overflow: hidden;
+    gap: 1px;
+    margin-top: auto;
+    padding-top: .5rem;
+}
+
+.mini-lang-segment {
+    height: 100%;
+    min-width: 2px;
+}
+
 .repo-status {
     margin-top: 1rem;
     font-size: 14px;
@@ -769,6 +818,210 @@ h6 {
 @keyframes spin-circle {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+/* Repo detail page */
+.repo-detail-back {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.15);
+    color: rgba(255,255,255,.6);
+    font-family: monospace;
+    font-size: 13px;
+    padding: .4rem .9rem;
+    border-radius: .25rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    align-self: flex-start;
+    transition: border-color .2s, color .2s;
+}
+.repo-detail-back:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    filter: none;
+}
+
+.repo-detail-header {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.repo-detail-title-row {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.repo-detail-meta {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: .75rem;
+}
+
+.repo-detail-gh-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #121219;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: .4rem;
+    padding: .65rem 1.4rem;
+    transition: filter .2s;
+}
+.repo-detail-gh-btn:hover {
+    filter: brightness(85%);
+}
+
+/* Language bar */
+.lang-section {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.lang-bar {
+    display: flex;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    gap: 2px;
+}
+
+.lang-bar-segment {
+    height: 100%;
+    background: var(--accent);
+    min-width: 2px;
+}
+
+.lang-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.lang-item {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    font-family: monospace;
+    font-size: 13px;
+    color: rgba(255,255,255,.7);
+}
+
+.lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+.lang-pct {
+    color: rgba(255,255,255,.4);
+}
+
+/* README markdown rendering */
+.repo-readme {
+    color: rgba(255,255,255,.85);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.repo-readme h1,
+.repo-readme h2,
+.repo-readme h3,
+.repo-readme h4 {
+    color: white;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.repo-readme h1 { font-size: 1.8rem; }
+.repo-readme h2 { font-size: 1.4rem; }
+.repo-readme h3 { font-size: 1.15rem; }
+
+.repo-readme p {
+    margin-bottom: .75rem;
+    color: rgba(255,255,255,.75);
+}
+
+.repo-readme a {
+    color: var(--accent);
+    text-decoration: none;
+}
+.repo-readme a:hover { text-decoration: underline; }
+
+.repo-readme code {
+    font-family: monospace;
+    background: rgba(255,255,255,.07);
+    padding: .1rem .4rem;
+    border-radius: .25rem;
+    font-size: 13px;
+    color: var(--accent);
+}
+
+.repo-readme pre {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: .4rem;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.repo-readme pre code {
+    background: none;
+    padding: 0;
+    color: rgba(255,255,255,.8);
+    font-size: 13px;
+}
+
+.repo-readme ul,
+.repo-readme ol {
+    padding-left: 1.5rem;
+    margin-bottom: .75rem;
+    color: rgba(255,255,255,.75);
+}
+
+.repo-readme li { margin-bottom: .25rem; }
+
+.repo-readme blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 0 0 1rem;
+    padding: .5rem 1rem;
+    color: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.03);
+    border-radius: 0 .25rem .25rem 0;
+}
+
+.repo-readme table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 14px;
+}
+
+.repo-readme th,
+.repo-readme td {
+    border: 1px solid rgba(255,255,255,.1);
+    padding: .5rem .75rem;
+    text-align: left;
+}
+
+.repo-readme th {
+    background: rgba(255,255,255,.06);
+    color: white;
+}
+
+.repo-readme img {
+    max-width: 100%;
+    border-radius: .4rem;
+}
+
+.repo-readme hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,.1);
+    margin: 1.5rem 0;
 }
 
 /* ── Web ─────────────────────────────────────────────── */
