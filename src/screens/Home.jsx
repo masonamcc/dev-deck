@@ -120,7 +120,7 @@ export default function Home() {
                         <div className="section">
                             <div className="section-header gap-1 color-accent">
                                 <p className="monospace">Projects</p>
-                                <div className="horizon-line-faint"/>
+                                <div className="horizon-line-faint"></div>
                             </div>
 
                             {loading && (
@@ -132,26 +132,28 @@ export default function Home() {
                             )}
 
                             {!loading && !error && (
-                                <>
-                                    {config.projects.map(project => (
+                                <div className={'mb-2-children'}>
+                                    {config.projects.sort((a,b) => a.projectName.localeCompare(b.projectName)).map(project => (
                                         <div className={"grid-2-col gap-1s"}>
                                             <div className={"mb-half-children color-white"}>
                                                 <h4 style={{fontWeight: 700}}>{project.projectName}</h4>
-                                                <h6>{project.status}</h6>
+                                                <p>{project.status}</p>
                                                 <p className={'monospace color-light'}>{project.projectDescription}</p>
                                             </div>
 
                                             <div className="repo-grid" key={project.projectName}>
                                                 {repos
-                                                    .filter(repo => repo.name.includes(project.projectName))
+                                                    .filter(repo => repo.name.toLowerCase().includes(project.projectName.toLowerCase()))
                                                     .map(repo => (
                                                         <RepoCard key={repo.id} repo={repo}/>
                                                     ))}
                                             </div>
+
                                         </div>
 
+
                                     ))}
-                                </>
+                                </div>
                             )}
                         </div>
                     )}
@@ -179,7 +181,7 @@ export default function Home() {
                                 {repos.filter(repo =>
                                     !repo.is_template && !repo.topics.some(topic => topic.includes('app')) &&
                                     !config.projects.some(proj =>
-                                        repo.name.includes(proj.projectName)
+                                        repo.name.toLowerCase().includes(proj.projectName.toLowerCase())
                                     )
                                 ).map(repo => (
                                     <RepoCard key={repo.id} repo={repo}/>
