@@ -10,6 +10,17 @@ export default defineConfig(({ mode }) => {
   plugins: [react()],
   server: {
     proxy: {
+      '/api/github': {
+        target: 'https://api.github.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api\/github/, ''),
+        configure: proxy => {
+          proxy.on('proxyReq', proxyReq => {
+            proxyReq.setHeader('Authorization', `Bearer ${env.GITHUB_TOKEN}`);
+            proxyReq.setHeader('X-GitHub-Api-Version', '2022-11-28');
+          });
+        }
+      },
       '/api/x': {
         target: 'https://api.x.com',
         changeOrigin: true,

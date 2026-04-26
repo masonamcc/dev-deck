@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-
 export function useGitHubRepoDetail(username, repoName) {
     const [repo, setRepo] = useState(null);
     const [readme, setReadme] = useState(null);
@@ -11,19 +10,15 @@ export function useGitHubRepoDetail(username, repoName) {
     useEffect(() => {
         if (!username || !repoName) return;
 
-        const token = import.meta.env.GITHUB_TOKEN;
-        const headers = token ? { Authorization: `Bearer ${token}` } : {};
-
-
         setLoading(true);
         setError(null);
 
-        const base = `https://api.github.com/repos/${username}/${repoName}`;
+        const base = `/api/github/repos/${username}/${repoName}`;
 
         Promise.all([
-            fetch(base, { headers }).then(r => r.ok ? r.json() : Promise.reject(r.status)),
-            fetch(`${base}/languages`, { headers }).then(r => r.ok ? r.json() : {}),
-            fetch(`${base}/readme`, { headers }).then(r => r.ok ? r.json() : null).catch(() => null),
+            fetch(base).then(r => r.ok ? r.json() : Promise.reject(r.status)),
+            fetch(`${base}/languages`).then(r => r.ok ? r.json() : {}),
+            fetch(`${base}/readme`).then(r => r.ok ? r.json() : null).catch(() => null),
         ])
             .then(([repoData, langs, readmeData]) => {
                 setRepo(repoData);
