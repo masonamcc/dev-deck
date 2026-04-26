@@ -57,31 +57,6 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {config.xHashtag && (tweets.length > 0 || xLoading || xError) && (
-                        <div className="section">
-                            <div className="section-header gap-1 color-accent">
-                                <p className="monospace">#{config.xHashtag}</p>
-                                <div className="horizon-line-faint"/>
-                            </div>
-
-                            {xLoading && (
-                                <p className="repo-status color-faint-text">Loading posts...</p>
-                            )}
-
-                            {xError && (
-                                <p className="repo-status error-message">{xError}</p>
-                            )}
-
-                            {!xLoading && !xError && (
-                                <div className="tweet-grid">
-                                    {tweets.map(tweet => (
-                                        <TweetCard key={tweet.id} tweet={tweet} author={users.get(tweet.author_id)}/>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    )}
-
                     {repos.some(repo => repo.topics?.some(topic => topic.includes('app'))) && (
                         <div className="section">
                             <div className="section-header gap-1 color-accent">
