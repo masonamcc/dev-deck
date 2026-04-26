@@ -8,7 +8,7 @@ export function useGitHubRepos(username) {
     useEffect(() => {
         if (!username) return;
 
-        const token = import.meta.env.VITE_GITHUB_TOKEN;
+        const token = import.meta.env.GITHUB_TOKEN;
         const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
         const url = token

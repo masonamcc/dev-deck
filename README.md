@@ -49,7 +49,7 @@ export const config = {
 Create a `.env` file in the project root to unlock private repos and raise the API rate limit:
 
 ```
-VITE_GITHUB_TOKEN=your_personal_access_token
+GITHUB_TOKEN=your_personal_access_token
 ```
 
 The token only needs `repo` scope for private repos, or no scopes at all for public-only access.
