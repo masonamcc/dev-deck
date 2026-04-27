@@ -1,78 +1,56 @@
 import {config} from '../config.js';
 import {useGitHubRepos} from '../hooks/useGitHubRepos.js';
-
-function RepoCard({repo}) {
-
-    console.log(repo)
-
-    return (
-        <a
-            href={repo.html_url}
-            target="_blank"
-            rel="noreferrer"
-            className="repo-card"
-        >
-            <div className="repo-card-header">
-                <span className="repo-card-name">{repo.name}</span>
-                {repo.private && <span className="repo-badge">private</span>}
-            </div>
-
-            {repo.description && (
-                <p className="repo-card-desc">{repo.description}</p>
-            )}
-
-            <div className="repo-card-meta">
-                {repo.language && (
-                    <span className="repo-lang">{repo.language}</span>
-                )}
-                <span className="repo-meta-item">★ {repo.stargazers_count}</span>
-                {repo.fork === false && repo.forks_count > 0 && (
-                    <span className="repo-meta-item">⑂ {repo.forks_count}</span>
-                )}
-            </div>
-        </a>
-    );
-}
+import RepoCard from '../components/RepoCard.jsx';
+import TweetCard from '../components/TweetCard.jsx';
+import {useNavigate} from "react-router-dom";
 
 export default function Home() {
     const {repos, loading, error} = useGitHubRepos(config.githubUsername);
+    const navigator = useNavigate()
 
     return (
         <div className="mainframe-grid bg-dark">
             <div className="mainframe-section scroll column vertical-center flex-col">
-                <div className="fullwidth vertical-center width-50">
+                <div className="fullwidth width-50 mb-1-children">
 
-                    <div className="color-white is-col-span-3 grid-2-col mb-1-children py-4"
+                    <div className="color-white mb-1-children"
                          style={{justifyContent: 'center'}}>
-                        <div className={'mobile'}>
-                            <h1>
-                                Mason <br/> McCall
-                            </h1>
-                            <p className={'monospace color-accent mb-1'}>{config.title}</p>
+                        <div className={'fullwidth mb-1-children'}>
+                            <div className={'py-2 mb-2-children'} style={{textAlign: 'center'}}>
+                                <h1 style={{marginTop: 0}}>
+                                    Mason McCall
+                                </h1>
+                                <h4 className={'monospace color-accent mb-1'}>{config.title}</h4>
+                                <a href={config.resumeLink} target="_blank" rel="noreferrer" className={'bg-accent resume-btn'}>Resume ↗</a>
+
+                            </div>
                             <div className={'horizon-line-faint'} />
+                            <div className={'mb-1-children monospace'}>
+                                <p>{config.location}</p>
+                                <p className={'monospace'}>{config.bio}</p>
+                            </div>
                         </div>
 
-                        <div className="web name-circle-container ">
-                            <svg viewBox="0 0 200 200" className="name-circle-svg">
-                                <defs>
-                                    <path
-                                        id="circlePath"
-                                        d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"
-                                    />
+                        {/*<div className="web name-circle-container ">*/}
+                        {/*    <svg viewBox="0 0 200 200" className="name-circle-svg">*/}
+                        {/*        <defs>*/}
+                        {/*            <path*/}
+                        {/*                id="circlePath"*/}
+                        {/*                d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"*/}
+                        {/*            />*/}
 
-                                </defs>
-                                <text className="name-circle-text monospace">
-                                    <textPath href="#circlePath">
-                                        <tspan style={{fill: 'white'}}>MASON MCCALL</tspan> • SOFTWARE ENGINEER •
-                                    </textPath>
-                                </text>
-                            </svg>
-                        </div>
-                        <div className={'mb-1-children monospace'}>
-                            <p>{config.location}</p>
-                            <p className={'monospace'}>{config.bio}</p>
-                            <button className={'button bg-accent'}>Resume</button>
-                        </div>
+                        {/*        </defs>*/}
+                        {/*        <text className="name-circle-text monospace">*/}
+                        {/*            <textPath href="#circlePath">*/}
+                        {/*                <tspan style={{fill: 'white'}}>MASON MCCALL</tspan> • SOFTWARE ENGINEER •*/}
+                        {/*            </textPath>*/}
+                        {/*        </text>*/}
+                        {/*    </svg>*/}
+                        {/*</div>*/}
+                        {/*<div className={'mb-1-children monospace web'}>*/}
+                        {/*    <p>{config.location}</p>*/}
+                        {/*    <p className={'monospace'}>{config.bio}</p>*/}
+                        {/*</div>*/}
                     </div>
 
                     <div className="skills-ticker-wrapper">
@@ -85,6 +63,20 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
+
+                    {config.xPosts?.length > 0 && (
+                        <div className="section">
+                            <div className="section-header gap-1 color-accent">
+                                <p className="monospace">#{config.xHashtag}</p>
+                                <div className="horizon-line-faint"/>
+                            </div>
+                            <div className="tweet-grid">
+                                {config.xPosts.map(post => (
+                                    <TweetCard key={post.id} tweet={post} author={post.author}/>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {repos.some(repo => repo.topics?.some(topic => topic.includes('app'))) && (
                         <div className="section">
@@ -141,7 +133,7 @@ export default function Home() {
                                                 <p className={'monospace color-light'}>{project.projectDescription}</p>
                                             </div>
 
-                                            <div className="repo-grid" key={project.projectName}>
+                                            <div className={'mb-1-children'} key={project.projectName}>
                                                 {repos
                                                     .filter(repo => repo.name.toLowerCase().includes(project.projectName.toLowerCase()))
                                                     .map(repo => (
@@ -191,9 +183,9 @@ export default function Home() {
                     </div>
 
                     {repos.some(repo => repo.is_template) && (
-                        <div className="section">
+                        <div className="section mb-5">
                             <div className="section-header gap-1 color-accent">
-                                <p className="section-title monospace">Template Repos</p>
+                                <p className="monospace">Template Repos</p>
                                 <div className="horizon-line-faint"/>
                             </div>
 

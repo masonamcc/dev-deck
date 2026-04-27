@@ -40,3 +40,8 @@
 .mb-8 { margin-bottom: 8rem }
 .mb-9 { margin-bottom: 9rem }
 .mb-10 { margin-bottom: 10rem }
+
+.space-between {
+    justify-content: space-between;
+}
+

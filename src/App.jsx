@@ -4,6 +4,7 @@ import Navbar from './navigation/Navbar.jsx';
 import Home from './screens/Home.jsx';
 import ManageOrgsScreen from "./screens/ManageOrgsScreen.jsx";
 import EditOrgScreen from "./screens/EditOrgScreen.jsx";
+import RepoDetail from "./screens/RepoDetail.jsx";
 
 function App() {
 
@@ -17,8 +18,7 @@ function App() {
                         <div className={'mainframe'}>
                             <Routes>
                                 <Route path={'/'} element={<Home/>}/>
-                                <Route path={'/manage/organizations'} element={<ManageOrgsScreen/>}/>
-                                <Route path={'/manage/organizations/edit'} element={<EditOrgScreen/>}/>
+                                <Route path={'/repo/:repoName'} element={<RepoDetail/>}/>
                             </Routes>
                         </div>
                     </div>

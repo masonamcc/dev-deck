@@ -8,8 +8,8 @@
 }
 
 :root {
-    --bg-color: linear-gradient(to bottom, #121219, color-mix(in srgb, var(--accent), black 90%));
-    --accent: #35d1f4;
+    --bg-color: linear-gradient(to bottom, #121219, color-mix(in srgb, var(--accent), black 95%));
+    --accent: #45c8ff;
     --faint: rgba(255,255,255,.2);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -24,7 +24,8 @@ body {
 
 p {
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 button {
@@ -108,7 +109,7 @@ h6 {
 /*Demarcation*/
 .horizon-line-faint {
     width: 100%;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(to right, var(--faint));
 }
 
@@ -443,7 +444,9 @@ h6 {
 }
 
 .has-2-col {
-    grid-template-columns: 1fr 1fr;
+    background: chartreuse;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .has-3-col {
@@ -551,6 +554,10 @@ h6 {
     width: 50%
 }
 
+.width-75 {
+    width: 75%;
+}
+
 /*Heights*/
 
 .height-50v {
@@ -618,13 +625,18 @@ h6 {
     margin-bottom: 1rem;
 }
 
+.section-header > *:first-child {
+    white-space: nowrap;
+}
+
 .section-title {
     width: 20%;
+
 }
 
 .section {
     width: 100%;
-    padding-block: 2rem;
+    /*padding-block: 2rem;*/
 }
 
 .grid-2-col {
@@ -636,7 +648,7 @@ h6 {
 /* GitHub repo grid */
 .repo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1rem;
 }
 
@@ -707,6 +719,51 @@ h6 {
     color: rgba(255, 255, 255, .4);
 }
 
+/* Language pills on repo cards */
+.repo-card-langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin-top: .25rem;
+}
+
+.repo-card-lang-pill {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    font-family: monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,.6);
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 999px;
+    padding: .15rem .5rem;
+}
+
+.repo-card-lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Mini language bar on repo cards */
+.mini-lang-bar {
+    display: flex;
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    overflow: hidden;
+    gap: 1px;
+    margin-top: auto;
+    padding-top: .5rem;
+}
+
+.mini-lang-segment {
+    height: 100%;
+    min-width: 2px;
+}
+
 .repo-status {
     margin-top: 1rem;
     font-size: 14px;
@@ -771,6 +828,359 @@ h6 {
     to { transform: rotate(360deg); }
 }
 
+/* Repo detail page */
+.repo-detail-back {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.15);
+    color: rgba(255,255,255,.6);
+    font-family: monospace;
+    font-size: 13px;
+    padding: .4rem .9rem;
+    border-radius: .25rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    align-self: flex-start;
+    transition: border-color .2s, color .2s;
+}
+.repo-detail-back:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    filter: none;
+}
+
+.repo-detail-header {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.repo-detail-title-row {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.repo-detail-meta {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: .75rem;
+}
+
+.resume-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #121219;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: .4rem;
+    padding: .65rem 1.4rem;
+    transition: filter .2s;
+}
+.resume-btn:hover {
+    filter: brightness(85%);
+}
+
+.repo-detail-gh-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #121219;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: .4rem;
+    padding: .65rem 1.4rem;
+    transition: filter .2s;
+}
+.repo-detail-gh-btn:hover {
+    filter: brightness(85%);
+}
+
+/* Language bar */
+.lang-section {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.lang-bar {
+    display: flex;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    gap: 2px;
+}
+
+.lang-bar-segment {
+    height: 100%;
+    background: var(--accent);
+    min-width: 2px;
+}
+
+.lang-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.lang-item {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    font-family: monospace;
+    font-size: 13px;
+    color: rgba(255,255,255,.7);
+}
+
+.lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+.lang-pct {
+    color: rgba(255,255,255,.4);
+}
+
+/* README markdown rendering */
+.repo-readme {
+    color: rgba(255,255,255,.85);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.repo-readme h1,
+.repo-readme h2,
+.repo-readme h3,
+.repo-readme h4 {
+    color: white;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.repo-readme h1 { font-size: 1.8rem; }
+.repo-readme h2 { font-size: 1.4rem; }
+.repo-readme h3 { font-size: 1.15rem; }
+
+.repo-readme p {
+    margin-bottom: .75rem;
+    color: rgba(255,255,255,.75);
+}
+
+.repo-readme a {
+    color: var(--accent);
+    text-decoration: none;
+}
+.repo-readme a:hover { text-decoration: underline; }
+
+.repo-readme code {
+    font-family: monospace;
+    background: rgba(255,255,255,.07);
+    padding: .1rem .4rem;
+    border-radius: .25rem;
+    font-size: 13px;
+    color: var(--accent);
+}
+
+.repo-readme pre {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: .4rem;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.repo-readme pre code {
+    background: none;
+    padding: 0;
+    color: rgba(255,255,255,.8);
+    font-size: 13px;
+}
+
+.repo-readme ul,
+.repo-readme ol {
+    padding-left: 1.5rem;
+    margin-bottom: .75rem;
+    color: rgba(255,255,255,.75);
+}
+
+.repo-readme li { margin-bottom: .25rem; }
+
+.repo-readme blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 0 0 1rem;
+    padding: .5rem 1rem;
+    color: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.03);
+    border-radius: 0 .25rem .25rem 0;
+}
+
+.repo-readme table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 14px;
+}
+
+.repo-readme th,
+.repo-readme td {
+    border: 1px solid rgba(255,255,255,.1);
+    padding: .5rem .75rem;
+    text-align: left;
+}
+
+.repo-readme th {
+    background: rgba(255,255,255,.06);
+    color: white;
+}
+
+.repo-readme img {
+    max-width: 100%;
+    border-radius: .4rem;
+}
+
+.repo-readme hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,.1);
+    margin: 1.5rem 0;
+}
+
+/* Tweet / X feed */
+.tweet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 1rem;
+}
+
+.tweet-grid-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    padding-bottom: 0.5rem;
+}
+
+.tweet-grid-horizontal::-webkit-scrollbar {
+    height: 4px;
+}
+
+.tweet-grid-horizontal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tweet-grid-horizontal::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+}
+
+.tweet-grid-horizontal > .tweet-card {
+    flex: 0 0 80vw;
+    max-width: 320px;
+    scroll-snap-align: start;
+}
+
+.tweet-card {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: .5rem;
+    color: white;
+    transition: border-color .2s, background .2s;
+}
+
+.tweet-card:hover {
+    background: rgba(255, 255, 255, .07);
+    border-color: var(--accent);
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.tweet-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.tweet-author {
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+}
+
+.tweet-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.tweet-handle {
+    font-size: 12px;
+    font-family: monospace;
+    color: rgba(255, 255, 255, .4);
+}
+
+.tweet-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .75);
+    flex: 1;
+    margin: 0;
+}
+
+.tweet-highlight {
+    color: var(--accent);
+}
+
+.tweet-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tweet-meta-item {
+    font-size: 12px;
+    color: rgba(255, 255, 255, .4);
+}
+
+.tweet-link {
+    margin-left: auto;
+    font-size: 14px;
+    color: rgba(255, 255, 255, .4);
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.tweet-link:hover {
+    color: var(--accent);
+}
+
+/* Repo detail two-column layout */
+.repo-detail-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+    /*padding: 3rem;*/
+    width: 50%;
+}
+
+.repo-detail-layout > * {
+    min-width: 0;
+}
+
 /* ── Web ─────────────────────────────────────────────── */
 @media (min-width: 1000px) and (max-width: 3000px) {
     .mobile {
@@ -781,7 +1191,16 @@ h6 {
 /* ── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 1000px) {
     h1 {
-        font-size: 60px;
+        font-size: 40px;
+    }
+
+    h4 {
+        font-size:16px;
+        /*background: orange;*/
+    }
+
+    h5 {
+        font-size: 20px;
     }
 
     h6 {
@@ -816,16 +1235,16 @@ h6 {
     }
 
     /* Collapse two-column grids to single column */
-    .grid-2-col,
-    .has-2-col,
-    .has-3-col {
-        grid-template-columns: 1fr;
-    }
+    /*.grid-2-col,*/
+    /*.has-2-col,*/
+    /*.has-3-col {*/
+    /*    grid-template-columns: repeat(2, 1fr);*/
+    /*}*/
 
-    .is-col-span-2,
-    .is-col-span-3 {
-        grid-column: span 1;
-    }
+    /*.is-col-span-2,*/
+    /*.is-col-span-3 {*/
+    /*    grid-column: span 1;*/
+    /*}*/
 
     /* Section title width was a fixed 20% — let it be natural */
     .section-title {
@@ -835,5 +1254,46 @@ h6 {
     /* Reduce large vertical padding on the intro block */
     .py-4 {
         padding-block: 2rem;
+    }
+
+    .repo-detail-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: flex-start;
+        /*padding: 2rem;*/
+        width: 90%;
+    }
+
+    .tweet-card {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+        padding: 1.25rem 1.5rem;
+        background: rgba(255, 255, 255, .04);
+        border: 1px solid rgba(255, 255, 255, .08);
+        border-radius: .5rem;
+        color: white;
+        transition: border-color .2s, background .2s;
+    }
+
+    .resume-btn {
+        display: inline-block;
+        text-decoration: none;
+        color: #121219;
+        font-weight: 600;
+        font-size: 14px;
+        border-radius: .4rem;
+        padding: .5rem 1rem;
+        transition: filter .2s;
+    }
+
+    .skills-ticker-item {
+
+        font-size: 12px;
+
+        padding: 0.2rem 0.3rem;
+        /*border: 1px solid rgba(255, 255, 255, 0.1);*/
+        border-radius: 999px;
     }
 }

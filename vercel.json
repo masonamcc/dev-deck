@@ -1,0 +1,8 @@
+{
+  "routes": [
+    { "src": "/api/github/(.*)", "dest": "/api/github/[...path]?path=$1" },
+    { "src": "/api/x/(.*)", "dest": "/api/x/[...path]?path=$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
